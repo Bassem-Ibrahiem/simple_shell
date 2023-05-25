@@ -30,20 +30,20 @@ int _erratoi(char *s)
 
 /**
  * print_error - prints an error message
- * @info: the parameter & return info struct
+ * @inf: the parameter & return inf struct
  * @estr: string containing specified error type
  * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
-void print_error(info_t *info, char *estr)
+void print_error(inf_t *inf, char *estr)
 {
-	_eputs(info->fname);
-	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(estr);
+	_nputs(inf->fname);
+	_nputs(": ");
+	print_d(inf->line_count, STDERR_FILENO);
+	_nputs(": ");
+	_nputs(inf->argv[0]);
+	_nputs(": ");
+	_nputs(estr);
 }
 
 /**
@@ -60,7 +60,7 @@ int print_d(int input, int fd)
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
-		__putchar = _eputchar;
+		__putchar = _nputchar;
 	if (input < 0)
 	{
 		_abs_ = -input;
